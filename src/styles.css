@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~normalize.css';
+
 .midnightblue {
   color: #112341;
 }
@@ -14,6 +16,11 @@
 .white {
   color: white;
 }
+
+.input_click:hover{
+  cursor: pointer;
+}
+
 
 .back_midnightblue {
     background-color: #112341;
@@ -46,4 +53,9 @@
   display: flex;
 }
 
-
+.input{
+  margin-bottom: 5%;
+  height: 35px;
+  width: 250px;
+  border-color: midnightblue;
+}

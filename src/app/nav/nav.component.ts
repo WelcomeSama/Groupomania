@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'profil-user',
-  templateUrl: './profil.component.html',
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
   styles: [
   ]
 })
-export class ProfilComponent implements OnInit {
+export class NavComponent implements OnInit {
 
   constructor(
     private router: Router
@@ -18,6 +18,10 @@ export class ProfilComponent implements OnInit {
 
   deconnexion() {
     this.router.navigate(['/login'])
+  }
+
+  user(){
+    this.router.navigate(['/user'])
   }
 
 }

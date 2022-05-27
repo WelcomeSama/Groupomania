@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProfilComponent } from './profil/profil.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { PostListComponent } from './post-list/post-list.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +21,12 @@ import { PostListComponent } from './post-list/post-list.component';
     HeaderComponent,
     ProfilComponent,
     NewPostComponent,
-    PostListComponent
+    PostListComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
