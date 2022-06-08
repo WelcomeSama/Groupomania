@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',
-  styles: [
-  ]
+  styleUrls: [ './new-post.css' ]
 })
 export class NewPostComponent implements OnInit {
 

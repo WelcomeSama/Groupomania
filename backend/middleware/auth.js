@@ -1,4 +1,4 @@
-/* const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
     try {
@@ -20,4 +20,4 @@ module.exports = (req, res, next) => {
             error : new Error('Requête invalide')
         });
     }
-}; */
+};

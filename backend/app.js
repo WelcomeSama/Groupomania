@@ -1,14 +1,24 @@
 const express = require("express");
 const app = express();
-const { Sequelize } = require('sequelize');
+const Sequelize = require("sequelize");
+
+const path = require("path");
+const cors = require('cors')
+const bodyParser = require('body-parser');
+
 
 const userRoutes = require('./routes/user');
 //const postRoutes = require('./routes/post');
-const path = require("path");
-const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+let sequelize;
+
+sequelize = new Sequelize('groupomania', 'openclassroom', 'openclassroom', {
+  host: 'localhost',
+  dialect: 'mysql'
+});
 
 const mysql = require("mysql");
 
@@ -45,5 +55,7 @@ app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.use("/api/user", userRoutes);
 //app.use("/api/post", postRoutes);
+
+app.use(cors());
 
 module.exports = app;

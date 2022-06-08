@@ -1,15 +1,17 @@
-<section class="">
-    <div class="center connexion">
-        <p class="title" >Conectez vous:</p>
-        <div>
-            <form class="form">
-                <input class="input" type="text"placeholder="Email" ><br>
-                <input class="input" type="password" placeholder="Mot de passe" ><br>
-                <input class="connect input_click" type="submit" value="Connectez-vous" (click)="login()" >
-            </form>
-            <div>
-                <p>pas encore de compte?</p>
-                <input class="create input_click" type="submit" value="Crée votre compte!" (click)="createUser()">
+<section>
+    <div>
+        <div class="center connexion bloc">
+            <p class="title" >Conectez vous:</p>
+            <div class="form">
+                <form class="form">
+                    <input class="input" type="text"placeholder="Email" ><br>
+                    <input class="input" type="password" placeholder="Mot de passe" ><br>
+                    <input class="connect input_click" type="submit" value="Connectez-vous" (click)="login()" >
+                </form>
+                <div>
+                    <p>pas encore de compte?</p>
+                    <input class="create input_click" type="submit" value="Créez votre compte!" (click)="createUser()">
+                </div>
             </div>
         </div>
     </div>

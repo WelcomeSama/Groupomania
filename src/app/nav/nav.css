@@ -1,0 +1,33 @@
+.section_nav{
+    display: flex;
+    position: fixed;
+    top: 0%;
+    width: 25%;
+    height: 100%;
+    margin-left: 5%;
+    border-right: solid 4px #112341;
+}
+
+.nav{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 50%;
+    margin-right: 5%;
+    margin-top: 50%;
+}
+
+.img{
+    margin-right: 50%;
+    width: 100%;
+}
+
+.input_nav{
+    margin-bottom: 30%;
+    height: 50px;
+    width: 100%;
+    border-color: #112341;
+}
+
+

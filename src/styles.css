@@ -56,6 +56,28 @@
 .input{
   margin-bottom: 5%;
   height: 35px;
-  width: 250px;
+  width: 60%;
   border-color: midnightblue;
+}
+
+.form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.bloc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 25%;
+  margin-left: 38%;
+  margin-top: 2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border: solid 2px midnightblue;
 }
