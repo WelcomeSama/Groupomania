@@ -1,26 +1,27 @@
 const jwt = require("jsonwebtoken");
-const { req_post_signup } = require("../repository/userRepository");
+const {
+  req_post_signup
+} = require("../repository/userRepository");
 
-exports.signup = async (req, res, next) => {
+exports.ctr_post_signup = async (req, res, next) => {
   try {
     // Enregistre les info dans data
-    const data = { 
+    const data = {
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
-      isAdmin:  req.body.isAdmin
+      isAdmin: req.body.isAdmin
     }
     // Appel la function post signup en y mettant le param data
     const req_signup = await req_post_signup(data)
 
     // Check s'il ya une erreur
-    if(req_signup.status === 500)
-    {
-      res.status(500).json(req_signup)      
+    if (req_signup.status === 500) {
+      res.status(500).json(req_signup)
     }
 
     // si tout est OK 
-    res.status(201).json(req_signup)      
+    res.status(201).json(req_signup)
   } catch (err) {
     console.log(err);
     next();
@@ -29,8 +30,8 @@ exports.signup = async (req, res, next) => {
 
 exports.login = (req, res, next) => {
   User.findOne({
-    email: req.body.email,
-  })
+      email: req.body.email,
+    })
     .then((user) => {
       if (!user) {
         return res.status(401).json({
@@ -47,12 +48,10 @@ exports.login = (req, res, next) => {
           }
           res.status(200).json({
             userId: user._id,
-            token: jwt.sign(
-              {
+            token: jwt.sign({
                 userId: user._id,
               },
-              "Token_Secret",
-              {
+              "Token_Secret", {
                 expiresIn: "24h",
               }
             ),
