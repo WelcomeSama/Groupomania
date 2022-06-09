@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "openclassroom",
-    "password": "openclassroom",
+    "username": "root",
+    "password": "",
     "database": "groupomania",
     "host": "127.0.0.1",
     "dialect": "mysql"

@@ -3,47 +3,24 @@ const { req_post_signup } = require("../repository/userRepository");
 
 exports.signup = async (req, res, next) => {
   try {
+    // Enregistre les info dans data
     const data = { 
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
       isAdmin:  req.body.isAdmin
     }
-    console.log(data)
-    await req_post_signup(data)
-    res.sendStatus(201);
+    // Appel la function post signup en y mettant le param data
+    const req_signup = await req_post_signup(data)
 
-    // console.log(req.body);
-    // console.log(req.body.password);
-    // await bcrypt
-    //   .hash(password, 10)
-    //   .then((hash) => {
-    //     User.create({
-    //       email: email,
-    //       username: username,
-    //       password: hash,
-    //       isAdmin: isAdmin,
-    //     })
-    //       .then(
-    //         (resultat) => console.log("resultat: ", resultat)
-    //         // res.status(201).json({
-    //         //   message: "Utilisateur créé.",
-    //         // })
-    //       )
-    //       .catch(
-    //         (error) => console.log("ERROR", error)
-    //         // res.status(400).json({
-    //         //   error,
-    //         // })
-    //       );
-    //   })
-    //   .catch((error) =>
-    //   console.log(error)
-    //     // res.status(500).json({
-    //     //   error,
-    //     // })
-    //   );
+    // Check s'il ya une erreur
+    if(req_signup.status === 500)
+    {
+      res.status(500).json(req_signup)      
+    }
 
+    // si tout est OK 
+    res.status(201).json(req_signup)      
   } catch (err) {
     console.log(err);
     next();

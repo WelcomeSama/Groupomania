@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Post.init({
-    idUSERS: DataTypes.INTEGER,
+    idUser: DataTypes.INTEGER,
     content: DataTypes.STRING,
     attachment: DataTypes.STRING,
     like: DataTypes.INTEGER
