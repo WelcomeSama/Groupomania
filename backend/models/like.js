@@ -1,24 +1,15 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Like extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  Like.init({
-    idPost: DataTypes.INTEGER,
-    idUser: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Like',
-  });
-  return Like;
-};
+const mongoose = require("mongoose");
+
+const likeSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+  postId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Post",
+  },
+  date: { type: Date, default: Date.now },
+});
+
+module.exports = mongoose.model("Like", likeSchema);

@@ -1,25 +1,16 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class comment extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  comment.init({
-    idPost: DataTypes.INTEGER,
-    idUser: DataTypes.INTEGER,
-    content: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'comment',
-  });
-  return comment;
-};
+const mongoose = require("mongoose");
+
+const commentSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+  postId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Post",
+  },
+  description: String,
+  date: { type: Date, default: Date.now },
+});
+
+module.exports = mongoose.model("Comment", commentSchema);
