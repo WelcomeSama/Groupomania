@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const { validEmail } = require("../helper/helper");
 const jwt = require("jsonwebtoken");
-var ObjectId = require("mongodb").ObjectID;
+var ObjectID = require("mongodb").ObjectID;
 
 exports.ctr_post_signup = async (req, res, next) => {
   try {
@@ -139,7 +139,7 @@ exports.ctr_get_user = (req, res, next) => {
   } */
 
   console.log(req.params);
-  if (!ObjectId.isValid(req.params.id))
+  if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
   User.findById(req.params.id, (err, docs) => {
@@ -149,7 +149,7 @@ exports.ctr_get_user = (req, res, next) => {
 };
 
 exports.ctr_delete_user = async (req, res, next) => {
-  if (!ObjectId.isValid(req.params.id))
+  if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
   try {
@@ -161,7 +161,7 @@ exports.ctr_delete_user = async (req, res, next) => {
 };
 
 exports.ctr_put_edit_user = async (req, res, next) => {
-  if (!ObjectId.isValid(req.params.id))
+  if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
   try {
@@ -184,3 +184,4 @@ exports.ctr_put_edit_user = async (req, res, next) => {
 };
 
 //edit fonctionne mais pas correctement
+//delete user à faire
