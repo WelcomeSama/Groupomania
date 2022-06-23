@@ -1,10 +1,10 @@
 const Post = require("../models/post");
 const User = require("../models/user");
-//const { uploadErrors } = require("../utils/errors.utils");
 const ObjectID = require("mongoose").Types.ObjectId;
 const fs = require("fs");
 const { promisify } = require("util");
 const pipeline = promisify(require("stream").pipeline);
+const { uploadErrors } = require("../utils/errors.utils");
 
 module.exports.readPost = (req, res) => {
   Post.find((err, docs) => {
@@ -14,7 +14,7 @@ module.exports.readPost = (req, res) => {
 };
 
 module.exports.createPost = async (req, res) => {
-  /*  let fileName;
+  let fileName;
 
   if (req.file !== null) {
     try {
@@ -38,12 +38,12 @@ module.exports.createPost = async (req, res) => {
         `${__dirname}/../client/public/uploads/posts/${fileName}`
       )
     );
-  } */
+  }
 
   const newPost = new Post({
     userId: req.body.userId,
     title: req.body.title,
-    //imageUrl: req.file !== null ? "./uploads/posts/" + fileName : "",
+    imageUrl: req.file !== null ? "./uploads/posts/" + fileName : "",
     likers: [],
     comments: [],
   });
@@ -222,5 +222,3 @@ module.exports.deleteCommentPost = (req, res) => {
     return res.status(400).send(err);
   }
 };
-
-// delete comment et edit comment ne fonctionne pas

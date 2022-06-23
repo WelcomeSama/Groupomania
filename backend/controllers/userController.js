@@ -11,6 +11,7 @@ exports.ctr_post_signup = async (req, res, next) => {
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
+      avatar: req.body.avatar,
     };
     // Appel la function post signup en y mettant le param data
     return await bcrypt
@@ -182,6 +183,3 @@ exports.ctr_put_edit_user = async (req, res, next) => {
     return res.status(500).json({ message: err });
   }
 };
-
-//edit fonctionne mais pas correctement
-//delete user à faire

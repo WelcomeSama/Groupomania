@@ -1,14 +1,21 @@
 <section>
-    <div class="center bloc ">
-        <div class="form">
-            <form class="form">
-                <input class="input" type="text" placeholder="Nom" ><br>
-                <input class="input" type="text" placeholder="Prénom" ><br>
-                <input class="input" type="text" placeholder="Nom d'utilisateur" ><br>
-                <input class="input" type="text" placeholder="Email" ><br>
-                <input class="input" type="password" placeholder="Mot de passe" ><br>
-                <input class="input input_click" type="submit" value="Créez mon compte" (click)="validCreate()">
-            </form>
-        </div>
+  <div class="center bloc">
+    <div class="form">
+      <form class="form">
+        <input
+          class="input"
+          type="text"
+          placeholder="Nom d'utilisateur"
+        /><br />
+        <input class="input" type="text" placeholder="Email" /><br />
+        <input class="input" type="password" placeholder="Mot de passe" /><br />
+        <input
+          class="input input_click"
+          type="submit"
+          value="Créez mon compte"
+          (click)="validCreate()"
+        />
+      </form>
     </div>
+  </div>
 </section>
