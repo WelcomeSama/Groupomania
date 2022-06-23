@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'createUser', component: CreateUserComponent },
   { path: 'user', component: ProfilComponent },
   { path: 'newPost', component: NewPostComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full'}
+  { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({

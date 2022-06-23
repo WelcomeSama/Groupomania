@@ -1,20 +1,28 @@
 <section>
   <div class="center bloc">
     <div class="form">
-      <form class="form">
+      <form [formGroup]="userForm" (ngSubmit)="validCreate()" class="form">
         <input
+          formControlName="username"
           class="input"
           type="text"
           placeholder="Nom d'utilisateur"
         /><br />
-        <input class="input" type="text" placeholder="Email" /><br />
-        <input class="input" type="password" placeholder="Mot de passe" /><br />
         <input
-          class="input input_click"
-          type="submit"
-          value="Créez mon compte"
-          (click)="validCreate()"
-        />
+          formControlName="email"
+          class="input"
+          type="text"
+          placeholder="Email"
+        /><br />
+        <input
+          formControlName="password"
+          class="input"
+          type="password"
+          placeholder="Mot de passe"
+        /><br />
+        <button class="input input_click" type="submit">
+          "Créez mon compte"
+        </button>
       </form>
     </div>
   </div>
