@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const postCtrl = require("../controllers/postController");
+const uploadController = require("../controllers/uploadController");
 const multer = require("multer");
 const upload = multer();
-const postCtrl = require("../controllers/postController");
 
 router.get("/", postCtrl.readPost);
 router.post("/", upload.single("file"), postCtrl.createPost);

@@ -3,6 +3,7 @@ const User = require("../models/user");
 const { validEmail } = require("../helper/helper");
 const jwt = require("jsonwebtoken");
 var ObjectID = require("mongodb").ObjectID;
+const { signUpErrors, signInErrors } = require("../utils/errors.utils");
 
 exports.ctr_post_signup = async (req, res, next) => {
   try {
@@ -92,7 +93,7 @@ exports.ctr_post_login = async (req, res, next) => {
             res.status(200).json({
               status: 200,
               user: {
-                _id: user._id,
+                userId: user._id,
                 username: user.username,
                 email: user.email,
                 token: jwt.sign({ userId: user._id }, "Token_Secret", {
@@ -126,19 +127,6 @@ exports.ctr_get_all_user = async (req, res, next) => {
 };
 
 exports.ctr_get_user = (req, res, next) => {
-  /*   try {
-    const data = {
-      username: req.body.username,
-    };
-
-    const get_user = await req_get_user(data);
-
-    res.status(get_user.status).json(get_user);
-  } catch (error) {
-    console.log(error);
-    next();
-  } */
-
   console.log(req.params);
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);

@@ -1,24 +1,14 @@
-<section>
-    <div class="column bloc">
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
-        <p>Affichage des publications</p>
+<ng-container class="post-list bloc">
+  <p class="list-title" *ngIf="posts.length > 0">
+    Publications les plus récentes:
+  </p>
+  <div class="post-list" *ngIf="posts.length > 0">
+    <div
+      class="post-list-item"
+      *ngFor="let post of posts"
+      (click)="onClickPost(post._id)"
+    >
+      <h4>{{ post.title | uppercase }}</h4>
     </div>
-</section>
+  </div>
+</ng-container>

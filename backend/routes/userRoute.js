@@ -12,6 +12,6 @@ router.get("/get-user/:id", userCtrl.ctr_get_user);
 router.delete("/delete-user/:id", userCtrl.ctr_delete_user);
 router.put("/edit-user/:id", userCtrl.ctr_put_edit_user);
 
-router.post("/upload", upload.single("file"), uploadController.uploadProfil);
+// router.post("/upload", upload.single("file"), uploadController.uploadProfil);
 
 module.exports = router;

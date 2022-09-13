@@ -1,28 +1,13 @@
-
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 991px){
-    
-    .flux{
-        width: 55%;
-        margin-left: 35%;
-    }
-
+@media (max-width: 991px) {
+  .flux {
+    width: 55%;
+    margin-left: 35%;
+  }
 }
 
-@media (max-width: 767px){
-    
-    .flux{
-        width: 95%;
-        margin-left: 2%;
-    }
-
+@media (max-width: 767px) {
+  .flux {
+    width: 95%;
+    margin-left: 2%;
+  }
 }

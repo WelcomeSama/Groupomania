@@ -1,14 +1,37 @@
-<section>
-    <div class="column newpost form">
-        <div class="form">
-            <p>"utilisateur"</p>
-            <input class="input post" type="text" placeholder="Comment allez vous aujourd'hui?">
-            <input class="input post_btn input_click" type="submit" value="Publier"><br>
-            <input class="input post_add_img input_click" type="submit" value="Ajouter image">
-        </div>
+<form [formGroup]="postForm">
+  <div class="form-group">
+    <label for="title">comment allez-vous? </label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      formControlName="title"
+    />
+  </div>
 
-        <div>
+  <div class="form-group">
+    <input
+      type="file"
+      accept="image/*"
+      #imageInput
+      (change)="onFileAdded($event)"
+    />
+    <!--     <button mat-raised-button color="primary" (click)="imageInput.click()">
+      ADD IMAGE
+    </button> -->
+    <img
+      [src]="imagePreview"
+      *ngIf="imagePreview"
+      style="max-height: 100px; display: block; margin-top: 10px"
+    />
+  </div>
 
-        </div>
-    </div>
-</section>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSubmit()"
+    [disabled]="postForm.invalid"
+  >
+    Publier
+  </button>
+</form>

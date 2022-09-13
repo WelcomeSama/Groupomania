@@ -1,32 +1,38 @@
 <section>
-  <div>
-    <div class="center connexion bloc">
+  <form [formGroup]="loginForm" *ngIf="!loading">
+    <div class="form-group center connexion bloc">
       <p class="title">Conectez vous:</p>
-      <div class="form">
-        <form class="form">
-          <input class="input" type="text" placeholder="Email" /><br />
-          <input
-            class="input"
-            type="password"
-            placeholder="Mot de passe"
-          /><br />
-          <input
-            class="connect input_click"
-            type="submit"
-            value="Connectez-vous"
-            (click)="login()"
-          />
-        </form>
-        <div>
-          <p>pas encore de compte?</p>
-          <input
-            class="create input_click"
-            type="submit"
-            value="Créez votre compte!"
-            (click)="createUser()"
-          />
-        </div>
-      </div>
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control input"
+        id="email"
+        formControlName="email"
+      />
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control input"
+        id="password"
+        formControlName="password"
+      />
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="loginForm.invalid"
+        (click)="onLogin()"
+      >
+        LOGIN
+      </button>
+      <br />
+      <p class="text-danger" *ngIf="errorMsg">{{ errorMsg }}</p>
+
+      <input
+        class="create input_click"
+        type="submit"
+        value="Créez votre compte!"
+        (click)="createUser()"
+      />
     </div>
-  </div>
+  </form>
 </section>
