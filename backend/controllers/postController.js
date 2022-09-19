@@ -16,7 +16,7 @@ module.exports.readPost = (req, res) => {
 module.exports.createPost = async (req, res) => {
   let fileName;
 
-  /* if (req.file !== null) {
+  if (req.file !== null) {
     try {
       if (
         req.file.detectedMimeType != "image/jpg" &&
@@ -25,7 +25,7 @@ module.exports.createPost = async (req, res) => {
       )
         throw Error("invalid file");
 
-      if (req.file.size > 500000) throw Error("max size");
+      if (req.file.size > 50000000) throw Error("max size");
     } catch (err) {
       const errors = uploadErrors(err);
       return res.status(201).json({ errors });
@@ -39,11 +39,11 @@ module.exports.createPost = async (req, res) => {
         `${__dirname}../../src/assets/upload/post${fileName}`
       )
     );
-  } */
+  }
   const newPost = new Post({
     userId: req.body.userId,
     title: req.body.title,
-    // imageUrl: req.file !== null ? "./upload/post/" + fileName : "",
+    imageUrl: req.file !== null ? "./upload/post/" + fileName : "",
     likers: [],
     comments: [],
   });
