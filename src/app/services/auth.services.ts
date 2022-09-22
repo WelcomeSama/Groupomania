@@ -52,14 +52,18 @@ export class AuthService {
   }
 
   loginUser(email: string, password: string) {
-    return this.http.post<{ user: { userId: string, token: string } }>(this.userUrl + '/login', { email: email, password: password }).pipe(
+    let data = this.http.post<{ user: { userId: string, username: string, token: string } }>(this.userUrl + '/login', { email: email, password: password }).pipe(
       tap(({ user }) => {
+        console.log(user);
         localStorage.setItem('userId', user.userId);
+        localStorage.setItem('username', user.username);
         this.authToken = user.token;
         // TODO 2022-09-13 BGO : let check the isAuth next seems to be buged
         // this.isAuth$.next(true);
       })
     );
+
+    return data;
   }
 
   deleteUser(userId: number): Observable<any> {

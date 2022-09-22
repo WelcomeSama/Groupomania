@@ -16,7 +16,7 @@ module.exports.readPost = (req, res) => {
 module.exports.createPost = async (req, res) => {
   let fileName;
 
-  if (req.file !== null) {
+  /* if (req.file !== null) {
     try {
       if (
         req.file.detectedMimeType != "image/jpg" &&
@@ -38,10 +38,12 @@ module.exports.createPost = async (req, res) => {
       fs.createWriteStream(
         `${__dirname}../../src/assets/upload/post${fileName}`
       )
-    );
-  }
+    ); 
+  }*/
+  console.log(req.body);
   const newPost = new Post({
     userId: req.body.userId,
+    username: req.body.username,
     title: req.body.title,
     imageUrl: req.file !== null ? "./upload/post/" + fileName : "",
     likers: [],
