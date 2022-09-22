@@ -14,6 +14,7 @@ import { NavComponent } from './nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     NewPostComponent,
     PostListComponent,
     NavComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,

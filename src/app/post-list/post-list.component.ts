@@ -28,8 +28,6 @@ export class PostListComponent implements OnInit {
     this.postService.getPosts();
   }
 
-  onClickPost(id: string) {
-    this.router.navigate(['post', id]);
-  }
+
 
 }

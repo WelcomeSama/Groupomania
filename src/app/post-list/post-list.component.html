@@ -7,13 +7,14 @@
       fair un component post et lui passé l'objet post en param 
       puis faire le ngfor sur le component post
       dans ce composant post ajouter un bouton etdit et un bouton delete
-    -->
-    <div
+
+      <div
       class="post-list-item"
       *ngFor="let post of posts"
       (click)="onClickPost(post._id)"
     > 
       <h4>{{ post.title | uppercase }}</h4> 
-    </div>
+    </div> -->
+    <app-post></app-post>
   </div>
 </ng-container>

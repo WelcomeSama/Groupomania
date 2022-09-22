@@ -77,7 +77,7 @@ export class NewPostComponent implements OnInit {
       this.posts.createPost(newPost, this.postForm.get('image')!.value).pipe(
         tap(({ message }) => {
           console.log(message);
-          // window.location.reload();
+          //window.location.reload();
         }),
         catchError(error => {
           console.error(error);
