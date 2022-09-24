@@ -7,7 +7,7 @@ import { Post } from '../models/post';
   styleUrls: ['post-brendiche-way.css']
 })
 export class PostBrendicheWay {
-  @Input() post!: Post
+  @Input() post!: Post;
   @Output() postEvent = new EventEmitter<Post>();
 
 
