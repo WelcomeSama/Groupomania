@@ -1,0 +1,12 @@
+<div (click)="onClickPost()">
+  <p>
+    Par
+    <strong>{{ post.username }}</strong>
+  </p>
+  <h4>{{ post.title | uppercase }}</h4>
+  <div>
+    <i class="fa-regular fa-thumbs-up"></i>
+  </div>
+  <button (click)="deletePost()">supprimer</button>
+  <button>modifier</button>
+</div>

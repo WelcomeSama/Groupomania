@@ -72,6 +72,7 @@ export class NewPostComponent implements OnInit {
     const newPost = new Post();
     newPost.title = this.postForm.get('title')!.value;
     newPost.userId = this.auth.getUserId();
+    newPost.username = this.auth.getUsername();
     console.log('new post created', newPost);
     if (this.mode === 'new') {
       this.posts.createPost(newPost, this.postForm.get('image')!.value).pipe(

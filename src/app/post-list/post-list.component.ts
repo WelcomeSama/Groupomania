@@ -28,6 +28,16 @@ export class PostListComponent implements OnInit {
     this.postService.getPosts();
   }
 
+  handleClickOnPost(post: Post) {
+    console.log(post);
+  }
 
+  deletePost(post: Post) {
+    console.log('delete post');
+    this.postService.deletePost(post._id).subscribe((data) => {
+      console.log('retrun from delete: ', data);
+      this.postService.getPosts();
+    })
+  }
 
 }
