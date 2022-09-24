@@ -28,7 +28,7 @@ export class PostListComponent implements OnInit {
     this.postService.getPosts();
   }
 
-  handleClickOnPost(post: Post){
+  handleClickOnPost(post: Post) {
     console.log(post);
   }
 
