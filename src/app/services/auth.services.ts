@@ -35,6 +35,10 @@ export class AuthService {
     return localStorage.getItem('userId') ?? '';
   }
 
+  getUsername(): string {
+    return localStorage.getItem('username') ?? '';
+  }
+
   getMyInfo(): Observable<any> {
     return this.http.get(this.userUrl + `/${sessionStorage.getItem('userId')}`, {
       headers: new HttpHeaders({

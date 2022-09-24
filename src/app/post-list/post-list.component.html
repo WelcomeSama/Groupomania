@@ -8,13 +8,12 @@
       puis faire le ngfor sur le component post
       dans ce composant post ajouter un bouton etdit et un bouton delete
       -->
-      <div
-      class="post-list-item"
-      *ngFor="let post of posts"
-    > 
-    <post-brendiche [post]="post" (postEvent)="handleClickOnPost($event)" ></post-brendiche>
-    </div> 
-    <!-- <app-post></app-post> -->
-
+    <div class="post-list-item" *ngFor="let postOfList of posts">
+      <post-brendiche
+        [post]="postOfList"
+        (postEvent)="handleClickOnPost($event)"
+        (deletPostEvent)="deletePost($event)"
+      ></post-brendiche>
+    </div>
   </div>
 </ng-container>

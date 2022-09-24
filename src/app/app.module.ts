@@ -14,7 +14,7 @@ import { NavComponent } from './nav/nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { PostComponent } from './post/post.component';
+//import { PostComponent } from './post-brendiche-way/post-brendiche-way.component';
 import { PostBrendicheWay } from './post-brendiche-way/post-brendiche-way.component';
 
 @NgModule({
@@ -28,7 +28,6 @@ import { PostBrendicheWay } from './post-brendiche-way/post-brendiche-way.compon
     NewPostComponent,
     PostListComponent,
     NavComponent,
-    PostComponent,
     PostBrendicheWay,
   ],
   imports: [
