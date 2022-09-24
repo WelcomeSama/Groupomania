@@ -4,7 +4,7 @@ import { Post } from '../models/post';
 @Component({
   selector: 'post-brendiche',
   templateUrl: 'post-brendiche-way.component.html',
-  styleUrls: ['post-brendiche-way.css']
+  styleUrls: ['post-brendiche-way.css'],
 })
 export class PostBrendicheWay {
   @Input() post!: Post;
