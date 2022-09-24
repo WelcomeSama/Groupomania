@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PostComponent } from './post/post.component';
+import { PostBrendicheWay } from './post-brendiche-way/post-brendiche-way.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PostComponent } from './post/post.component';
     PostListComponent,
     NavComponent,
     PostComponent,
+    PostBrendicheWay,
   ],
   imports: [
     BrowserModule,
