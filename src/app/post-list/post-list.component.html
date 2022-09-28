@@ -3,17 +3,12 @@
     Publications les plus récentes:
   </p>
   <div class="post-list" *ngIf="posts.length > 0">
-    <!-- 
-      fair un component post et lui passé l'objet post en param 
-      puis faire le ngfor sur le component post
-      dans ce composant post ajouter un bouton etdit et un bouton delete
-      -->
     <div class="post-list-item" *ngFor="let postOfList of posts">
-      <post-brendiche
+      <post-component
         [post]="postOfList"
         (postEvent)="handleClickOnPost($event)"
         (deletPostEvent)="deletePost($event)"
-      ></post-brendiche>
+      ></post-component>
     </div>
   </div>
 </ng-container>
