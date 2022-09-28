@@ -2,11 +2,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Post } from '../models/post';
 
 @Component({
-  selector: 'post-brendiche',
+  selector: 'post-component',
   templateUrl: 'post.component.html',
   styleUrls: ['post.component.css'],
 })
-export class PostBrendicheWay {
+export class PostComponent {
   @Input() post!: Post;
   @Output() postEvent = new EventEmitter<Post>();
   @Output() deletPostEvent = new EventEmitter<Post>();
@@ -18,6 +18,5 @@ export class PostBrendicheWay {
   deletePost() {
     this.deletPostEvent.emit(this.post);
   }
-
 
 }
