@@ -1,25 +1,12 @@
-<p class="list-title" *ngIf="posts.length > 0">
-  Publications les plus récentes:
-</p>
-<div class="post-list" *ngIf="posts.length > 0">
-  <div
-    class="post-list-item"
-    *ngFor="let post of posts"
-    (click)="onClickPost(post._id)"
-  >
-    <div>
-      <p>
-        Par
-        <strong>{{ post.username }}</strong>
-      </p>
-      <h2>{{ post.title | uppercase }}</h2>
-    </div>
-    <div>
-      <i class="fa-regular fa-thumbs-up"></i>
-    </div>
-    <div>
-      <a class="modify-btn">modifié</a>
-      <a class="delete-btn">supprimé</a>
-    </div>
+<div (click)="onClickPost()">
+  <p>
+    Par
+    <strong>{{ post.username }}</strong>
+  </p>
+  <h4>{{ post.title | uppercase }}</h4>
+  <div>
+    <a><i class="fa-regular fa-thumbs-up"></i></a>
   </div>
+  <button (click)="deletePost()">supprimer</button>
+  <button>modifier</button>
 </div>
