@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../services/post.service';
-import { Post } from '../models/post';
+import { Post, PostList } from '../models/post';
 import { Router } from '@angular/router';
 import { catchError, EMPTY, map, Observable, of, switchMap, take, tap } from 'rxjs';
 
@@ -11,7 +11,7 @@ import { catchError, EMPTY, map, Observable, of, switchMap, take, tap } from 'rx
 })
 export class PostListComponent implements OnInit {
 
-  posts: Post[] = [];
+  posts: PostList[] = [];
   errorMsg!: string;
   userId!: string;
   likePending!: boolean;
@@ -23,7 +23,10 @@ export class PostListComponent implements OnInit {
 
   ngOnInit() {
     this.postService.post$.subscribe((posts) => {
-      this.posts = posts;
+      this.posts = posts.map(post => ({
+        post, 
+        isEditing: false,
+      }));
     });
     this.postService.getPosts();
   }
@@ -38,6 +41,13 @@ export class PostListComponent implements OnInit {
       console.log('retrun from delete: ', data);
       this.postService.getPosts();
     })
+  }
+
+  switchEditPost(post:Post){
+    const postlist = this.posts.find(p => p.post._id === post._id);
+    if(postlist){
+      postlist.isEditing = true;
+    }
   }
 
 }

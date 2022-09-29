@@ -3,12 +3,18 @@
     Publications les plus récentes:
   </p>
   <div class="post-list" *ngIf="posts.length > 0">
-    <div class="post-list-item" *ngFor="let postOfList of posts">
+    <div class="post-list-item" *ngFor="let post of posts">
+      <span> isEditing {{post.isEditing}}</span>
       <post-component
-        [post]="postOfList"
+        *ngIf="!post.isEditing else edit"
+        [post]="post.post"
         (postEvent)="handleClickOnPost($event)"
         (deletPostEvent)="deletePost($event)"
+        (editPostEvent)="switchEditPost($event)"
       ></post-component>
+      <ng-template #edit>
+        <app-edit-post ></app-edit-post>
+       </ng-template>
     </div>
   </div>
 </ng-container>
