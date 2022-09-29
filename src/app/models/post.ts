@@ -5,3 +5,8 @@ export class Post {
     userId!: string;
     username: string;
 }
+
+export class PostList {
+  post: Post;
+  isEditing: boolean;
+}

@@ -10,6 +10,7 @@ export class PostComponent {
   @Input() post!: Post;
   @Output() postEvent = new EventEmitter<Post>();
   @Output() deletPostEvent = new EventEmitter<Post>();
+  @Output() editPostEvent = new EventEmitter<Post>();
 
   onClickPost() {
     this.postEvent.emit(this.post);
@@ -17,6 +18,10 @@ export class PostComponent {
 
   deletePost() {
     this.deletPostEvent.emit(this.post);
+  }
+
+  editPost(){
+    this.editPostEvent.emit(this.post);
   }
 
 }
