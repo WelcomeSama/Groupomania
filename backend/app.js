@@ -6,10 +6,12 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoute");
 const postRoutes = require("./routes/postRoute");
 const path = require("path");
+const dotenv = require("dotenv");
+dotenv.config();
 
 mongoose
   .connect(
-    "mongodb+srv://usertest:openclassroom@cluster0.bogvs.mongodb.net/groupomania?retryWrites=true&w=majority",
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DATA_BASE_PASSWORD}@${process.env.DATA_BASE_URL}/${process.env.DATA_BASE_NAME}?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("Connexion à MongoDB réussie !"))

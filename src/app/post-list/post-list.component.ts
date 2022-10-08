@@ -24,7 +24,7 @@ export class PostListComponent implements OnInit {
   ngOnInit() {
     this.postService.post$.subscribe((posts) => {
       this.posts = posts.map(post => ({
-        post, 
+        post,
         isEditing: false,
       }));
     });
@@ -43,10 +43,25 @@ export class PostListComponent implements OnInit {
     })
   }
 
-  switchEditPost(post:Post){
+  editPost(post: Post): void {
+    this.postService.modifyPost(post._id, post, post.imageUrl).pipe(
+      tap(({ message }) => {
+        console.log(message);
+        this.toggleEditPost(post);
+        this.postService.getPosts();
+      }),
+      catchError(error => {
+        console.error(error);
+        this.errorMsg = error.message;
+        return EMPTY;
+      })
+    ).subscribe();
+  }
+
+  toggleEditPost(post: Post) {
     const postlist = this.posts.find(p => p.post._id === post._id);
-    if(postlist){
-      postlist.isEditing = true;
+    if (postlist) {
+      postlist.isEditing = !postlist.isEditing;
     }
   }
 

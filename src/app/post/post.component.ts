@@ -20,7 +20,7 @@ export class PostComponent {
     this.deletPostEvent.emit(this.post);
   }
 
-  editPost(){
+  editPost() {
     this.editPostEvent.emit(this.post);
   }
 
