@@ -5,6 +5,7 @@ const fs = require("fs");
 const { promisify } = require("util");
 const pipeline = promisify(require("stream").pipeline);
 const { uploadErrors } = require("../utils/errors.utils");
+const { saveFile, deleteFile } = require("../helper/file");
 
 module.exports.readPost = (req, res) => {
   Post.find((err, docs) => {
@@ -14,44 +15,23 @@ module.exports.readPost = (req, res) => {
 };
 
 module.exports.createPost = async (req, res) => {
-  let fileName;
-
-  /* if (req.file !== null) {
-    try {
-      if (
-        req.file.detectedMimeType != "image/jpg" &&
-        req.file.detectedMimeType != "image/png" &&
-        req.file.detectedMimeType != "image/jpeg"
-      )
-        throw Error("invalid file");
-
-      if (req.file.size > 50000000) throw Error("max size");
-    } catch (err) {
-      const errors = uploadErrors(err);
-      return res.status(201).json({ errors });
-    }
-    fileName = req.body.posterId + Date.now() + ".jpg";
-
-    await pipeline(
-      req.file.stream,
-      //chemin de stockage des images
-      fs.createWriteStream(
-        `${__dirname}../../src/assets/upload/post${fileName}`
-      )
-    ); 
-  }*/
   console.log(req.body);
   const newPost = new Post({
     userId: req.body.userId,
     username: req.body.username,
     title: req.body.title,
-    imageUrl: req.file !== null ? "./upload/post/" + fileName : "",
+    imageUrl: "",
     likers: [],
     comments: [],
   });
 
   try {
     const post = await newPost.save();
+    if (req.file) {
+      saveFile(req.file, `${post._id}.jpg`);
+      post.imageUrl = `${post._id}.jpg`;
+      post.save();
+    }
     return res.status(201).json(post);
   } catch (err) {
     return res.status(400).send(err);
@@ -71,8 +51,13 @@ module.exports.updatePost = (req, res) => {
     { $set: updatedRecord },
     { new: true },
     (err, docs) => {
-      if (!err) res.send(docs);
-      else console.log("Update error : " + err);
+      if (!err) {
+        // check if file is not undefined object {buffer, mimetype, size}
+        // post is updated
+        // deletFile with post id
+        // create file with post id
+        res.send(docs);
+      } else console.log("Update error : " + err);
     }
   );
 };
@@ -82,8 +67,12 @@ module.exports.deletePost = (req, res) => {
     return res.status(400).send("ID unknown : " + req.params.id);
 
   Post.findByIdAndRemove(req.params.id, (err, docs) => {
-    if (!err) res.send(docs);
-    else console.log("Delete error : " + err);
+    if (!err) {
+      try {
+        deleteFile(`${req.params.id}.jpg`);
+        res.send(docs);
+      } catch (e) {}
+    } else console.log("Delete error : " + err);
   });
 };
 

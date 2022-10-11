@@ -7,9 +7,9 @@ const { uploadErrors } = require("../utils/errors.utils");
 module.exports.uploadProfil = async (req, res) => {
   try {
     if (
-      req.file.detectedMimeType != "image/jpg" &&
-      req.file.detectedMimeType != "image/png" &&
-      req.file.detectedMimeType != "image/jpeg"
+      req.file.mimetype != "image/jpg" &&
+      req.file.mimetype != "image/png" &&
+      req.file.mimetype != "image/jpeg"
     ) {
       throw Error("invalid file");
     }
@@ -20,24 +20,11 @@ module.exports.uploadProfil = async (req, res) => {
     return res.status(201).json({ errors });
   }
   const fileName = req.body.name + ".jpg";
-
-  await pipeline(
-    req.file.stream,
-    //chemin de stockage des images
-    fs.createWriteStream(`${__dirname}../../src/assets/upload/user${fileName}`)
+  return fs.writeFile(
+    `${__dirname}/../images/${fileName}`,
+    req.file.buffer,
+    () => {
+      res.status(200).end();
+    }
   );
-
-  try {
-    await User.findByIdAndUpdate(
-      req.body.userId,
-      { $set: { picture: "./upload/user" + fileName } },
-      { new: true, upsert: true, setDefaultsOnInsert: true },
-      (err, docs) => {
-        if (!err) return res.send(docs);
-        else return res.status(500).send({ message: err });
-      }
-    );
-  } catch (err) {
-    return res.status(500).send({ message: err });
-  }
 };

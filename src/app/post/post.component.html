@@ -4,6 +4,11 @@
     <strong>{{ post.username }}</strong>
   </p>
   <h4>{{ post.title | uppercase }}</h4>
+  <img
+    width="100"
+    [src]="'http://localhost:3000/images/' + post.imageUrl"
+    alt=""
+  />
   <div>
     <a><i class="fa-regular fa-thumbs-up"></i></a>
   </div>

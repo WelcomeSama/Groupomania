@@ -4,6 +4,7 @@ import { Post } from '../models/post';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.services';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -43,12 +44,12 @@ export class PostsService {
     );
   }
 
-  createPost(post: Post, _image?: File) {
-    const data = {
-      userId: post.userId,
-      username: post.username,
-      title: post.title
-    }
+  createPost(post: Post, image: File) {
+    const data = new FormData();
+    data.append('userId', post.userId);
+    data.append('username', post.username);
+    data.append('title', post.title);
+    data.append('file', image);
     return this.http.post<{ message: string }>('http://localhost:3000/api/post', data).pipe(
       tap(() => this.getPosts()),
       catchError(error => throwError(() => error.error.message))
