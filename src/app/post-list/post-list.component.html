@@ -11,6 +11,7 @@
         (postEvent)="handleClickOnPost($event)"
         (deletPostEvent)="deletePost($event)"
         (editPostEvent)="toggleEditPost($event)"
+        (likePostEvent)="editPost($event)"
       ></post-component>
       <ng-template #edit>
         <app-edit-post

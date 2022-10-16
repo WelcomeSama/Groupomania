@@ -12,6 +12,10 @@
   <div>
     <a><i class="fa-regular fa-thumbs-up"></i></a>
   </div>
-  <button (click)="deletePost()">supprimer</button>
-  <button (click)="editPost()">modifier</button>
+  <div>{{ post.likers.length }}</div>
+  <button *ngIf="isOwner" (click)="deletePost()">supprimer</button>
+  <button *ngIf="isOwner" (click)="editPost()">modifier</button>
+  <button (click)="likePost()" [ngClass]="isLiked ? 'red' : 'green'">
+    {{ isLiked ? "dislike" : "like" }}
+  </button>
 </div>

@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Post } from '../models/post';
+import { AuthService } from '../services/auth.services';
 
 @Component({
   selector: 'post-component',
@@ -11,6 +12,19 @@ export class PostComponent {
   @Output() postEvent = new EventEmitter<Post>();
   @Output() deletPostEvent = new EventEmitter<Post>();
   @Output() editPostEvent = new EventEmitter<Post>();
+  @Output() likePostEvent = new EventEmitter<Post>();
+
+
+  constructor(private authService: AuthService) {
+  }
+
+  get isLiked(): boolean {
+    return this.post?.likers.some((l) => l === this.authService.getUserId())
+  }
+
+  get isOwner(): boolean {
+    return this.post.userId === this.authService.getUserId();
+  }
 
   onClickPost() {
     this.postEvent.emit(this.post);
@@ -22,6 +36,16 @@ export class PostComponent {
 
   editPost() {
     this.editPostEvent.emit(this.post);
+  }
+
+  likePost() {
+    const idx = this.post.likers.indexOf(this.authService.getUserId())
+    if (idx === -1) {
+      this.post.likers.push(this.authService.getUserId())
+    } else {
+      this.post.likers.splice(idx, 1);
+    }
+    this.likePostEvent.emit(this.post);
   }
 
 }

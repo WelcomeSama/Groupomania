@@ -39,11 +39,13 @@ module.exports.createPost = async (req, res) => {
 };
 
 module.exports.updatePost = (req, res) => {
+  console.log("image", req.file);
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
   const updatedRecord = {
     title: req.body.title,
+    likers: req.body.likers,
   };
 
   Post.findByIdAndUpdate(
@@ -52,7 +54,15 @@ module.exports.updatePost = (req, res) => {
     { new: true },
     (err, docs) => {
       if (!err) {
+        console.log(req.file);
         // check if file is not undefined object {buffer, mimetype, size}
+        if (req.file) {
+          try {
+            deleteFile(`${req.params.id}.jpg`);
+            saveFile(req.file, `${req.params.id}.jpg`);
+            docs.imageUrl = `${req.params.id}.jpg`;
+          } catch (e) {}
+        }
         // post is updated
         // deletFile with post id
         // create file with post id

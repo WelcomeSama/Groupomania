@@ -11,16 +11,21 @@ export class AuthService {
 
   private userUrl = 'http://localhost:3000/api/user';
   isAuth$ = new BehaviorSubject<boolean>(false);
-  private authToken = '';
 
   constructor(private http: HttpClient,
-    private router: Router) { }
+    private router: Router) {
+    if (this.authToken !== '') this.isAuth$.next(true);
+  }
 
   httpHeader = {
     headers: new HttpHeaders({
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     })
+  }
+
+  get authToken(): string {
+    return localStorage.getItem('token') ?? '';
   }
 
   createUser(user: User) {
@@ -61,9 +66,9 @@ export class AuthService {
         console.log(user);
         localStorage.setItem('userId', user.userId);
         localStorage.setItem('username', user.username);
-        this.authToken = user.token;
-        // TODO 2022-09-13 BGO : let check the isAuth next seems to be buged
-        // this.isAuth$.next(true);
+        localStorage.setItem('token', user.token);
+        // let check the isAuth next seems to be buged
+        this.isAuth$.next(true);
       })
     );
 
@@ -79,8 +84,9 @@ export class AuthService {
   }
 
   logout() {
-    this.authToken = '';
     localStorage.setItem('userId', '');
+    localStorage.setItem('username', '');
+    localStorage.setItem('token', '');
     this.isAuth$.next(false);
     this.router.navigate(['login']);
   }

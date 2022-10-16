@@ -97,7 +97,7 @@ exports.ctr_post_login = async (req, res, next) => {
                 username: user.username,
                 email: user.email,
                 token: jwt.sign({ userId: user._id }, "Token_Secret", {
-                  expiresIn: "24h",
+                  expiresIn: "72h",
                 }),
               },
             });

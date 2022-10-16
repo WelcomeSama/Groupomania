@@ -26,7 +26,8 @@ export class EditPostComponent implements OnInit {
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
-      title: new FormControl(this.post.title)
+      title: new FormControl(this.post.title),
+      image: new FormControl(this.post.imageUrl)
     });
 
   }
@@ -34,8 +35,20 @@ export class EditPostComponent implements OnInit {
   onSubmit() {
     const updatedPost: Post = {
       ...this.post,
-      title: this.postForm.get('title')?.value
+      title: this.postForm.get('title')?.value,
+      imageUrl: this.postForm.get('image')?.value
     }
     this.editPostEvent.emit(updatedPost);
+  }
+
+  onFileAdded(event: Event) {
+    const file = (event.target as HTMLInputElement).files![0];
+    this.postForm.get('image')!.setValue(file);
+    this.postForm.updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
 }

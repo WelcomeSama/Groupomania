@@ -57,18 +57,15 @@ export class PostsService {
   }
 
   modifyPost(id: string, post: Post, image: string | File) {
-    if (typeof image === 'string') {
-      return this.http.put<{ message: string }>('http://localhost:3000/api/post/' + id, post).pipe(
-        catchError(error => throwError(() => error.error.message))
-      );
-    } else {
-      const formData = new FormData();
-      formData.append('post', JSON.stringify(post));
-      formData.append('image', image);
-      return this.http.put<{ message: string }>('http://localhost:3000/api/post/' + id, formData).pipe(
-        catchError(error => throwError(() => error.error.message))
-      );
-    }
+    console.log('modify post', typeof image);
+    const data = new FormData();
+    data.append('userId', post.userId);
+    data.append('username', post.username);
+    data.append('title', post.title);
+    data.append('file', image);
+    return this.http.put<{ message: string }>('http://localhost:3000/api/post/' + id, data).pipe(
+      catchError(error => throwError(() => error.error.message))
+    );
   }
 
   deletePost(id: string) {

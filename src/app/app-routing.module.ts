@@ -5,13 +5,14 @@ import { FluxComponent } from './flux/flux.component';
 import { LoginComponent } from './login/login.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { UserComponent } from './user/user.component';
+import { AuthGuard } from './services/auth.guards';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'flux', component: FluxComponent },
+  { path: 'flux', component: FluxComponent, canActivate: [AuthGuard] },
   { path: 'createUser', component: CreateUserComponent },
   { path: 'user', component: UserComponent },
-  { path: 'newPost', component: NewPostComponent },
+  { path: 'newPost', component: NewPostComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 

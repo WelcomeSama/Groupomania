@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PostComponent } from './post/post.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { AuthGuard } from './services/auth.guards';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { EditPostComponent } from './edit-post/edit-post.component';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

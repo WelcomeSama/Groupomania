@@ -4,6 +4,7 @@ export class Post {
   imageUrl!: string;
   userId!: string;
   username: string;
+  likers: string[];
 }
 
 export class PostList {
