@@ -7,8 +7,7 @@ import { AuthService } from '../services/auth.services';
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
-  styles: [
-  ]
+  styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
 

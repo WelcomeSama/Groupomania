@@ -54,8 +54,7 @@ module.exports.updatePost = (req, res) => {
     { new: true },
     (err, docs) => {
       if (!err) {
-        console.log(req.file);
-        // check if file is not undefined object {buffer, mimetype, size}
+        console.log("ici", req.file);
         if (req.file) {
           try {
             deleteFile(`${req.params.id}.jpg`);
@@ -63,9 +62,6 @@ module.exports.updatePost = (req, res) => {
             docs.imageUrl = `${req.params.id}.jpg`;
           } catch (e) {}
         }
-        // post is updated
-        // deletFile with post id
-        // create file with post id
         res.send(docs);
       } else console.log("Update error : " + err);
     }

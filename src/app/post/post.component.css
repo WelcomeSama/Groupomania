@@ -1,0 +1,83 @@
+.user {
+  border-bottom: solid 2px #ffd7d7;
+}
+
+.username {
+  font-size: larger;
+  font-style: italic;
+}
+
+.title {
+  width: 90%;
+  margin-left: 5%;
+  padding-bottom: 4%;
+  border-bottom: solid 2px #ffd7d7;
+}
+
+.imgpost {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.likers {
+  font-size: larger;
+  font-style: italic;
+  margin-left: 3%;
+}
+
+.like {
+  color: blue;
+}
+
+.dislike {
+  margin: 0 0 3% 3%;
+  background-color: blue;
+  color: white;
+}
+
+.delete {
+  margin-left: 65%;
+  margin-right: 3%;
+  border-radius: 15px;
+}
+
+.delete:hover {
+  background-color: #ffd7d7;
+  border: solid 2px #4e5166;
+
+  -webkit-transition: background 0.5s 0s ease;
+  -moz-transition: background 0.5s 0s ease;
+  -o-transition: background 0.5s 0s ease;
+  transition: background 0.5s 0s ease;
+}
+
+.edit {
+  border-radius: 15px;
+}
+
+.edit:hover {
+  background-color: #ffd7d7;
+  border: solid 2px #4e5166;
+
+  -webkit-transition: background 0.5s 0s ease;
+  -moz-transition: background 0.5s 0s ease;
+  -o-transition: background 0.5s 0s ease;
+  transition: background 0.5s 0s ease;
+}
+
+@media (max-width: 991px) {
+  .imgpost {
+    width: 98%;
+    margin-left: 1%;
+  }
+
+  .delete {
+    margin-left: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .delete {
+    margin-left: 30%;
+  }
+}

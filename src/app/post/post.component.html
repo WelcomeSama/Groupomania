@@ -1,21 +1,28 @@
 <div (click)="onClickPost()">
-  <p>
+  <p class="user">
     Par
-    <strong>{{ post.username }}</strong>
+    <strong class="username">{{ post.username }}</strong>
   </p>
-  <h4>{{ post.title | uppercase }}</h4>
+  <h4 class="title">{{ post.title | uppercase }}</h4>
   <img
-    width="100"
+    class="imgpost"
     [src]="'http://localhost:3000/images/' + post.imageUrl"
     alt=""
   />
+  <div class="likers">{{ post.likers.length }}</div>
+
   <div>
-    <a><i class="fa-regular fa-thumbs-up"></i></a>
+    <i class="far fa-heart"></i>
   </div>
-  <div>{{ post.likers.length }}</div>
-  <button *ngIf="isOwner" (click)="deletePost()">supprimer</button>
-  <button *ngIf="isOwner" (click)="editPost()">modifier</button>
-  <button (click)="likePost()" [ngClass]="isLiked ? 'red' : 'green'">
+
+  <button (click)="likePost()" [ngClass]="isLiked ? 'like' : 'dislike'">
     {{ isLiked ? "dislike" : "like" }}
+    <i class="far fa-heart"></i>
+    <i class="fas fa-heart"></i>
   </button>
+
+  <button *ngIf="isOwner" class="delete" (click)="deletePost()">
+    supprimer
+  </button>
+  <button *ngIf="isOwner" class="edit" (click)="editPost()">modifier</button>
 </div>

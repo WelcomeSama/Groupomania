@@ -12,7 +12,7 @@ exports.ctr_post_signup = async (req, res, next) => {
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
-      avatar: req.body.avatar,
+      admin: req.body.admin,
     };
     // Appel la function post signup en y mettant le param data
     return await bcrypt
@@ -25,6 +25,7 @@ exports.ctr_post_signup = async (req, res, next) => {
             email: data.email,
             username: data.username,
             password: hash,
+            admin: false,
           });
 
           return user

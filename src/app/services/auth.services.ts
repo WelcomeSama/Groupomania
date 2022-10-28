@@ -1,8 +1,9 @@
 import { Component, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { BehaviorSubject, tap, Observable } from 'rxjs';
+import { BehaviorSubject, tap, Observable, catchError, throwError } from 'rxjs';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
+import { stringify } from 'querystring';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,19 @@ export class AuthService {
     return localStorage.getItem('username') ?? '';
   }
 
+  /*   getAdmin() {
+      let userId = localStorage.getItem('userId');
+  
+      return this.http.get(
+        'http://localhost:3000/api/user/get-user/' + userId
+      ).pipe(
+        catchError(error => throwError(() => error.error.message))
+      );
+    } */
+
+
+
+
   getMyInfo(): Observable<any> {
     return this.http.get(this.userUrl + `/${sessionStorage.getItem('userId')}`, {
       headers: new HttpHeaders({
@@ -60,6 +74,7 @@ export class AuthService {
     })
   }
 
+
   loginUser(email: string, password: string) {
     let data = this.http.post<{ user: { userId: string, username: string, token: string } }>(this.userUrl + '/login', { email: email, password: password }).pipe(
       tap(({ user }) => {
@@ -67,7 +82,6 @@ export class AuthService {
         localStorage.setItem('userId', user.userId);
         localStorage.setItem('username', user.username);
         localStorage.setItem('token', user.token);
-        // let check the isAuth next seems to be buged
         this.isAuth$.next(true);
       })
     );

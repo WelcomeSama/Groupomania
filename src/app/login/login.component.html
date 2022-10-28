@@ -5,24 +5,25 @@
       <label for="email">Email</label>
       <input
         type="email"
-        class="form-control input"
+        class="form-control input login"
         id="email"
         formControlName="email"
       />
       <label for="password">Password</label>
       <input
         type="password"
-        class="form-control input"
+        class="form-control input login"
         id="password"
         formControlName="password"
       />
       <button
         mat-raised-button
+        class="input_click"
         color="primary"
         [disabled]="loginForm.invalid"
         (click)="onLogin()"
       >
-        LOGIN
+        Connexion
       </button>
       <br />
       <p class="text-danger" *ngIf="errorMsg">{{ errorMsg }}</p>

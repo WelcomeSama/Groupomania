@@ -26,6 +26,13 @@ export class PostComponent {
     return this.post.userId === this.authService.getUserId();
   }
 
+  /*  
+   || this.authService.getAdmin()
+
+  get isAdmin(): boolean {
+      return this.post.userId === this.authService.getAdmin;
+    }  */
+
   onClickPost() {
     this.postEvent.emit(this.post);
   }

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: [ './nav.css' ]
+  styleUrls: ['./nav.css']
 })
 export class NavComponent implements OnInit {
 
@@ -17,10 +17,6 @@ export class NavComponent implements OnInit {
 
   deconnexion() {
     this.router.navigate(['/login'])
-  }
-
-  user(){
-    this.router.navigate(['/user'])
   }
 
 }

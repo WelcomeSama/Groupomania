@@ -5,11 +5,19 @@
     <title>Groupomania</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <script
-      src="https://kit.fontawesome.com/1ffa588777.js"
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/img/icon.png" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
       crossorigin="anonymous"
-    ></script>
+    />
   </head>
   <body>
     <app-root></app-root>
@@ -18,25 +26,8 @@
 
 <!--
 
--authgard 
--une vrai deconnexion
-
-
--ajouté option modifier les post /front => voir post-list.component.html
-
--ajouté fonction like /front => faire l'étape d'avant
--ajout de fichier post et user /back /front => resource à explorer https://medium.com/@sandakova.varvara/multipart-data-2be14bd21ff1 https://www.npmjs.com/package/multer
-
-
--Admin 
-
--afficher le profil de l'utilisateur /front (optionnel)
--ajouté une date au post (optionnel)
-
-
--responsive
-
-
+-Admin getAdmin / auth service / post component ?
+-like (modify post ?) à revoir
 
 
 Critères d’évaluation: 
@@ -50,9 +41,7 @@ Le code du site web est validé si :
 Authentifier un utilisateur et maintenir sa session
 Le code du site web est validé si :
 ❒ l’utilisateur peut se connecter à l’application.
-
 ❒ l’utilisateur peut se déconnecter de l’application.
-
 ❒ les données de l’application web sont persistantes pendant le temps de connexion de l’utilisateur.
 ❒ les données de connexion des utilisateurs sont sécurisées, c’est à dire aucun mot de passe n’est stocké en clair dans la base de données.
 Implémenter un stockage de données sécurisé en utilisant une base de données
@@ -61,7 +50,6 @@ La base de données (export SQL ou autre format) est validé si :
 Les postes des utilisateurs ;
 Les données des utilisateurs.
 ❒ un poste doit pouvoir contenir du texte et une image.
-
 ❒ l’utilisateur peut créer, modifier et supprimer des postes.
 
 ❒ l’utilisateur peut liker des postes.

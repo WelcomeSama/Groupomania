@@ -1,6 +1,6 @@
 <form [formGroup]="postForm">
   <div class="form-group">
-    <label for="title">comment allez-vous? </label>
+    <label for="title">modifier votre post : </label>
     <input
       type="text"
       class="form-control"
@@ -24,8 +24,8 @@
   </div>
 
   <button
+    class="publier"
     mat-raised-button
-    color="primary"
     (click)="onSubmit()"
     [disabled]="postForm.invalid"
   >

@@ -1,34 +1,34 @@
-<form [formGroup]="postForm">
-  <div class="form-group">
-    <label for="title">comment allez-vous? </label>
-    <input
-      type="text"
-      class="form-control"
-      id="title"
-      formControlName="title"
-    />
-  </div>
+<div>
+  <form [formGroup]="postForm">
+    <div class="form-group column">
+      <label for="title" class="title">Comment allez-vous? </label>
+      <input
+        type="text"
+        class="form-control title_input"
+        id="title"
+        formControlName="title"
+      />
+    </div>
 
-  <div class="form-group">
-    <input
-      type="file"
-      accept="image/*"
-      #imageInput
-      (change)="onFileAdded($event)"
-    />
-    <img
-      [src]="imagePreview"
-      *ngIf="imagePreview"
-      style="max-height: 100px; display: block; margin-top: 10px"
-    />
-  </div>
+    <div class="form-group">
+      <input
+        class="input_create"
+        type="file"
+        accept="image/*"
+        #imageInput
+        (change)="onFileAdded($event)"
+      />
+      <img [src]="imagePreview" *ngIf="imagePreview" class="preview" />
+    </div>
 
-  <button
-    mat-raised-button
-    color="primary"
-    (click)="onSubmit()"
-    [disabled]="postForm.invalid"
-  >
-    Publier
-  </button>
-</form>
+    <button
+      class="input_publier"
+      mat-raised-button
+      color="primary"
+      (click)="onSubmit()"
+      [disabled]="postForm.invalid"
+    >
+      Publier
+    </button>
+  </form>
+</div>
