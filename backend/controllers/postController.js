@@ -45,7 +45,7 @@ module.exports.updatePost = (req, res) => {
 
   const updatedRecord = {
     title: req.body.title,
-    likers: req.body.likers,
+    likers: req.body.likers ? JSON.stringify(req.body.likers) : [],
   };
 
   Post.findByIdAndUpdate(
