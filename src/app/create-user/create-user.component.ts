@@ -33,7 +33,6 @@ export class CreateUserComponent implements OnInit {
 
     this.userService.createUser(this.user).subscribe(message => {
       console.log(message);
-      //if else : contenu du message
 
       this.router.navigate(["/login"])
     });

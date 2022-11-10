@@ -18,8 +18,6 @@
 
   <button (click)="likePost()" [ngClass]="isLiked ? 'dislike' : 'like'">
     {{ isLiked ? "dislike" : "Like" }}
-    <!--     <i class="far fa-heart"></i>
-    <i class="fas fa-heart"></i> -->
   </button>
 
   <button *ngIf="isOwner" class="delete" (click)="deletePost()">

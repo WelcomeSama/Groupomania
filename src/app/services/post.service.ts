@@ -16,7 +16,6 @@ export class PostsService {
     private auth: AuthService) { }
 
   getPosts() {
-    //let username = localStorage.getItem("username");
     this.http.get<Post[]>('http://localhost:3000/api/post').pipe(
       tap(posts => this.post$.next(posts)
       ),
