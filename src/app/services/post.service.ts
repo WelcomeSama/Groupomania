@@ -57,12 +57,12 @@ export class PostsService {
   }
 
   modifyPost(id: string, post: Post, image: string | File) {
-    console.log('modify post', typeof image);
     const data = new FormData();
     data.append('userId', post.userId);
     data.append('username', post.username);
     data.append('title', post.title);
-    data.append('file', image);
+    data.append('likers', JSON.stringify(post.likers));
+    data.append('file', typeof image === 'object' ? image : '');
     return this.http.put<{ message: string }>('http://localhost:3000/api/post/' + id, data).pipe(
       catchError(error => throwError(() => error.error.message))
     );

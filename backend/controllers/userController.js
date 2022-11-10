@@ -75,6 +75,7 @@ exports.ctr_post_login = async (req, res, next) => {
 
     return await User.findOne({ email: data.email })
       .then(async (user) => {
+        console.log(user);
         if (!user) {
           res.status(401).json({
             status: 401,
@@ -97,6 +98,7 @@ exports.ctr_post_login = async (req, res, next) => {
                 userId: user._id,
                 username: user.username,
                 email: user.email,
+                isAdmin: user.admin,
                 token: jwt.sign({ userId: user._id }, "Token_Secret", {
                   expiresIn: "72h",
                 }),

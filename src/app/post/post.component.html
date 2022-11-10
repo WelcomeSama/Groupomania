@@ -9,16 +9,17 @@
     [src]="'http://localhost:3000/images/' + post.imageUrl"
     alt=""
   />
-  <div class="likers">{{ post.likers.length }}</div>
-
-  <div>
-    <i class="far fa-heart"></i>
+  <div class="like_number">
+    <div>
+      <i class="far fa-heart"></i>
+    </div>
+    <div class="likers">{{ post.likers.length }}</div>
   </div>
 
-  <button (click)="likePost()" [ngClass]="isLiked ? 'like' : 'dislike'">
-    {{ isLiked ? "dislike" : "like" }}
-    <i class="far fa-heart"></i>
-    <i class="fas fa-heart"></i>
+  <button (click)="likePost()" [ngClass]="isLiked ? 'dislike' : 'like'">
+    {{ isLiked ? "dislike" : "Like" }}
+    <!--     <i class="far fa-heart"></i>
+    <i class="fas fa-heart"></i> -->
   </button>
 
   <button *ngIf="isOwner" class="delete" (click)="deletePost()">

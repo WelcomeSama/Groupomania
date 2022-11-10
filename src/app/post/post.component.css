@@ -19,20 +19,31 @@
   margin-left: 10%;
 }
 
-.likers {
-  font-size: larger;
-  font-style: italic;
+.like_number {
+  display: flex;
   margin-left: 3%;
 }
 
+.likers {
+  font-size: larger;
+  font-style: italic;
+  margin-left: 0;
+}
+
 .like {
+  margin: 0 0 3% 3%;
+  background-color: aliceblue;
   color: blue;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .dislike {
   margin: 0 0 3% 3%;
   background-color: blue;
   color: white;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .delete {

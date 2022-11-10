@@ -30,7 +30,7 @@ module.exports.createPost = async (req, res) => {
     if (req.file) {
       saveFile(req.file, `${post._id}.jpg`);
       post.imageUrl = `${post._id}.jpg`;
-      post.save();
+      await post.save();
     }
     return res.status(201).json(post);
   } catch (err) {
@@ -39,27 +39,26 @@ module.exports.createPost = async (req, res) => {
 };
 
 module.exports.updatePost = (req, res) => {
-  console.log("image", req.file);
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
   const updatedRecord = {
     title: req.body.title,
-    likers: req.body.likers,
+    likers: req.body.likers ? JSON.parse(req.body.likers) : [],
   };
 
   Post.findByIdAndUpdate(
     req.params.id,
     { $set: updatedRecord },
     { new: true },
-    (err, docs) => {
+    async (err, docs) => {
       if (!err) {
-        console.log("ici", req.file);
         if (req.file) {
           try {
             deleteFile(`${req.params.id}.jpg`);
             saveFile(req.file, `${req.params.id}.jpg`);
             docs.imageUrl = `${req.params.id}.jpg`;
+            await docs.save();
           } catch (e) {}
         }
         res.send(docs);

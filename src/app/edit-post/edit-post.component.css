@@ -1,2 +1,41 @@
+.edit_form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.edit {
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+  font-style: italic;
+  font-weight: bold;
+  margin: 5%;
+  width: 100%;
+}
+
+.text {
+  display: block;
+  background-color: aliceblue;
+  border-radius: 15px;
+  height: auto;
+  width: 100%;
+  margin-bottom: 7%;
+}
+
 .publier {
+  margin-top: 5%;
+  margin-bottom: 3%;
+  border-radius: 20px;
+  margin-left: 50%;
+}
+
+.publier:hover {
+  background-color: #ffd7d7;
+  border: solid 2px #4e5166;
+
+  -webkit-transition: background 0.5s 0s ease;
+  -moz-transition: background 0.5s 0s ease;
+  -o-transition: background 0.5s 0s ease;
+  transition: background 0.5s 0s ease;
 }

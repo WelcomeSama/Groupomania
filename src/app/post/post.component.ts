@@ -23,15 +23,8 @@ export class PostComponent {
   }
 
   get isOwner(): boolean {
-    return this.post.userId === this.authService.getUserId();
+    return this.authService.getAdmin() || this.post.userId === this.authService.getUserId();
   }
-
-  /*  
-   || this.authService.getAdmin()
-
-  get isAdmin(): boolean {
-      return this.post.userId === this.authService.getAdmin;
-    }  */
 
   onClickPost() {
     this.postEvent.emit(this.post);

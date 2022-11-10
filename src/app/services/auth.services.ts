@@ -45,15 +45,9 @@ export class AuthService {
     return localStorage.getItem('username') ?? '';
   }
 
-  /*   getAdmin() {
-      let userId = localStorage.getItem('userId');
-  
-      return this.http.get(
-        'http://localhost:3000/api/user/get-user/' + userId
-      ).pipe(
-        catchError(error => throwError(() => error.error.message))
-      );
-    } */
+  getAdmin() {
+    return localStorage.getItem('isAdmin') === 'true'
+  }
 
 
 
@@ -76,12 +70,13 @@ export class AuthService {
 
 
   loginUser(email: string, password: string) {
-    let data = this.http.post<{ user: { userId: string, username: string, token: string } }>(this.userUrl + '/login', { email: email, password: password }).pipe(
+    let data = this.http.post<{ user: { userId: string, username: string, token: string, isAdmin: boolean } }>(this.userUrl + '/login', { email: email, password: password }).pipe(
       tap(({ user }) => {
         console.log(user);
         localStorage.setItem('userId', user.userId);
         localStorage.setItem('username', user.username);
         localStorage.setItem('token', user.token);
+        localStorage.setItem('isAdmin', `${user.isAdmin}`);
         this.isAuth$.next(true);
       })
     );
