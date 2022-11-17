@@ -18,7 +18,7 @@
 .input_nav {
   color: white;
   height: 40px;
-  width: 100%;
+  width: auto;
   border-color: #4e5166;
   background-color: #4e5166;
 }

@@ -4,13 +4,12 @@ module.exports = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
     const decodedToken = jwt.verify(token, "Token_Secret");
-    const userId = decodedToken.userId;
-    if (req.body.userId && req.body.userId !== userId) {
-      throw "User Id non valable !";
-    } else {
+    if (new Date().getTime() < decodedToken.exp * 1000) {
       next();
+    } else {
+      throw "Token expiered";
     }
-  } catch {
+  } catch (error) {
     res.status(401).json({
       error: error | "Requête non authentifiée.",
     });
