@@ -39,6 +39,7 @@ export class EditPostComponent implements OnInit {
       imageUrl: this.postForm.get('image')?.value
     }
     this.editPostEvent.emit(updatedPost);
+    window.location.reload();
   }
 
   onFileAdded(event: Event) {
